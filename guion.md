@@ -16,6 +16,22 @@ Vamos a necesitar el archivo de la sesión pasada, y los UI de SproutLands, dejo
 <!-- Git hub -->
 Como pudieron notar en el video anterior, y también en este momento, los gráficos de la computadora que estoy usando no son óptimos. Por esa razón, voy a cambiar de equipo. Pensando en que alguno de ustedes podría encontrarse en una situación similar, les mostraré cómo hacer este cambio utilizando GitHub para mantener nuestro proyecto actualizado y accesible desde cualquier computadora.
 
+Abre la terminal en la carpeta raíz del proyecto
+Ahí donde están las carpetas Assets, ProjectSettings, Packages, etc.
+Inicializa el repositorio Git
+Crea un archivo .gitignore
+Añade estas líneas. Las pondré en la plataforma.
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+sysinfo.txt
+
+
 <!-- Abirir en Unity -->
 Abre el Unity Hub y haz clic en el botón que dice "Add". Después, busca la carpeta donde guardaste tu proyecto y selecciona "Open". Una vez que el proyecto aparece en la lista, ya está listo para usarse. Ábrelo... y comencemos.
 <!-- Sorting Layers y distancia de siembra -->
