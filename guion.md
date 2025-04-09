@@ -41,7 +41,12 @@ Para hacerlo, ve al menú:
 Edit > Project Settings > Tags and Layers > Sorting Layers
 
 
-<!-- Desafío: pseudocódigo sembrar adelante del personaje y en la dirección que está mirando-->
+<!-- Desafío: pseudocódigo sembrar adelante del personaje y en la dirección que está mirando.
+EN CANVA -->
+
+Ahora viene el desafío.
+La idea es que el personaje siembre algo frente a él, en la dirección en la que está mirando, no justo debajo de sus pies. Tienes 5 min.
+
 
 <!-- Solución e implementación -->
 
