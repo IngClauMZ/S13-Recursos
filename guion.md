@@ -49,6 +49,39 @@ La idea es que el personaje siembre algo frente a él, en la dirección en la qu
 
 
 <!-- Solución e implementación -->
+<!-- Canva -->
+Esta es la solución que a mí se me ocurrió, pero eso no significa que sea la única forma de hacerlo.
+En programación, muchas veces hay varias maneras válidas de resolver un mismo problema. Lo importante es que la lógica tenga sentido y que funcione correctamente.
+
+Para que el prefab del trigo se siembre delante del personaje —según la última dirección en la que estaba mirando—, vamos a usar dos valores que ya estamos guardando en el Animator: ultimaDirX y ultimaDirY.
+
+Con esos dos valores podemos construir una dirección, y usarla para calcular una posición adelantada, justo al frente del personaje. Esa será la posición donde se va a sembrar el prefab.
+
+Ahora, vamos a modificar el método Sembrar.
+En lugar del contenido que tiene actualmente, vamos a escribir lo siguiente:
+
+<!-- sublime -->
+
+public void Sembrar(InputAction.CallbackContext contexto){
+    if(contexto.started){
+        Debug.Log("Presionaste C");
+
+        // Obtener la última dirección en la que se movió el jugador
+        float dirX = animator.GetFloat("ultimaDirX");
+        float dirY = animator.GetFloat("ultimaDirY");
+
+        // Normalizar para que la distancia sea constante
+        Vector2 direccion = new Vector2(dirX, dirY).normalized;
+
+        // Posición final un poco delante del jugador
+        Vector2 posicionFinal = (Vector2)transform.position + direccion * 1f; // Puedes cambiar la distancia
+
+        Instantiate(trigo, posicionFinal, Quaternion.identity);
+    }
+}
+Con esto, el trigo se sembrará un paso adelante, en la dirección en la que el personaje estaba mirando la última vez que se movió.
+La línea donde multiplicamos por 1f nos permite ajustar qué tan lejos se siembra. Puedes aumentar o reducir ese número si quieres que esté más cerca o más lejos.
+
 
 <!-- PreFAbplanta -->
 
