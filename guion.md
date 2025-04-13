@@ -3,12 +3,33 @@
 <!-- Comentario -->
 <!-- Bienvenida y objetivo de la sesión -->
 # Bienvenida
-Buenos días, hoy es nuestra sesión 13, vamos a:
-1. Usar Git Hub para respaldar / mover / compartir nuestro proyecto.
-2. Ubicación de la siembra.
-3. Evitar que nuestro player pise las siembras.
-4. Reusar nuestro código con otra semilla
-5. Agregar un menú
+Buenos días, hoy es nuestra sesión 13. Hoy vamos a trabajar en varios temas importantes que nos ayudarán a construir una experiencia de juego mucho más rica y completa en Unity 2D.
+
+El objetivo general de esta sesión continuar desarrollando un pequeño proyecto de simulación de granja, utilizando mecánicas básicas, buenas prácticas de programación y el control de versiones para gestionar nuestros avances.
+
+Vamos a empezar con GitHub. Aprenderemos cómo funciona esta plataforma para poder versionar correctamente nuestros proyectos. Subiremos nuestros archivos, haremos nuestros primeros commits y entenderemos la lógica detrás de trabajar en la nube con código. Esto es fundamental para cualquier desarrollo profesional.
+
+Después, vamos a ver cómo controlar la visibilidad de los objetos en nuestra escena usando las Sorting Layers. Esto nos permitirá decidir qué aparece delante y qué queda detrás, lo cual es súper útil en un juego en 2D donde hay árboles, personajes, animales, y objetos interactivos.
+
+A continuación, enfrentaremos un desafío interesante: escribir el pseudocódigo para una mecánica que nos permita sembrar justo delante del personaje, tomando en cuenta la dirección hacia la que está mirando. Lo pensaremos primero en lógica simple y luego lo convertiremos en código funcional dentro de Unity.
+
+Una vez que tengamos esta base, hablaremos sobre los ScriptableObjects, que nos permiten definir datos reutilizables sin necesidad de escribir mucho código adicional. Vamos a crear Scriptable Assets para nuestras plantas y semillas, lo que nos va a ahorrar tiempo y nos dará mayor organización.
+
+Con estos elementos listos, pasaremos a modificar dos scripts importantes: el que permite sembrar una planta y el que controla su florecimiento. Esto nos ayudará a ver cómo nuestras configuraciones en los ScriptableObjects se conectan con el comportamiento del juego.
+
+Después implementaremos un menú de siembra para que el jugador pueda elegir qué plantar. Además, mostraremos en pantalla la cantidad de semillas disponibles, para que el jugador pueda tomar decisiones basadas en los recursos que tiene.
+
+También hablaremos de cómo guardar el estado del juego: cuántas semillas tienes, qué has sembrado, qué has recogido, etc. Aprenderemos a guardar y recuperar esta información para que el progreso del jugador no se pierda al cerrar el juego.
+
+Luego implementaremos la opción de recoger semillas, así como un sistema de monedas para que el jugador pueda comprar objetos o herramientas dentro del juego.
+
+Y ya que hablamos de economía, construiremos un pequeño mercadillo donde el jugador podrá, por ejemplo, comprar un hacha. Con esa hacha, podrá talar árboles dentro del juego, lo cual abrirá nuevas posibilidades para futuras mecánicas.
+
+Pasaremos después al sistema de animales. Vamos a trabajar con un Prefab de gallina que se mueva de forma autónoma. Estas gallinas pondrán huevos, que eventualmente se convertirán en pollitos, y con el tiempo, en nuevas gallinas. Esto nos permitirá explorar conceptos de IA básica y ciclos de vida dentro del juego.
+
+Finalmente, veremos cómo exportar el juego para que pueda ser jugado fuera de Unity. Una vez que tengan su juego listo, les pediré que suban sus evidencias al repositorio de GitHub y hagan la entrega final.
+
+Con esto vamos a cerrar el proyecto, integrando todo lo aprendido en clase: lógica, organización, programación orientada a objetos, arte, economía del juego y publicación.
 <!-- Recursos del juego -->
 # Recursos para la sesión
 Vamos a necesitar el archivo de la sesión pasada, y los UI de SproutLands, dejo el enlace en la plataforma, una cuenta de GitHub.
@@ -31,7 +52,9 @@ Añade estas líneas. Las pondré en la plataforma.
 [Mm]emoryCaptures/
 sysinfo.txt
 
-
+<!-- Crear repositorio -->
+Ahora vamos a GitHub para crear un nuevo repositorio.
+Este repositorio será el espacio donde guardaremos y actualizaremos nuestro proyecto.
 <!-- Abirir en Unity -->
 Abre el Unity Hub y haz clic en el botón que dice "Add". Después, busca la carpeta donde guardaste tu proyecto y selecciona "Open". Una vez que el proyecto aparece en la lista, ya está listo para usarse. Ábrelo... y comencemos.
 <!-- Sorting Layers y distancia de siembra -->
