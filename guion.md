@@ -3,7 +3,12 @@
 <!-- Comentario -->
 <!-- Bienvenida y objetivo de la sesión -->
 # Bienvenida
+
+==título==
+
 Buenos días, hoy es nuestra sesión 13. Hoy vamos a trabajar en varios temas importantes que nos ayudarán a construir una experiencia de juego mucho más rica y completa en Unity 2D.
+
+# Objetivo General
 
 El objetivo general de esta sesión continuar desarrollando un pequeño proyecto de simulación de granja, utilizando mecánicas básicas, buenas prácticas de programación y el control de versiones para gestionar nuestros avances.
 
@@ -35,14 +40,15 @@ Con esto vamos a cerrar el proyecto, integrando todo lo aprendido en clase: lóg
 Vamos a necesitar el archivo de la sesión pasada, y los UI de SproutLands, dejo el enlace en la plataforma, una cuenta de GitHub.
 
 <!-- Git hub -->
+# Paso 1: GitHub
 Como pudieron notar en el video anterior, y también en este momento, los gráficos de la computadora que estoy usando no son óptimos. Por esa razón, voy a cambiar de equipo. Pensando en que alguno de ustedes podría encontrarse en una situación similar, les mostraré cómo hacer este cambio utilizando GitHub para mantener nuestro proyecto actualizado y accesible desde cualquier computadora.
 
 Abre la terminal en la carpeta raíz del proyecto
 Ahí donde están las carpetas Assets, ProjectSettings, Packages, etc.
 Inicializa el repositorio Git
-Crea un archivo .gitignore
+Crea un archivo `.gitignore`
 Añade estas líneas. Las pondré en la plataforma.
-
+```
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -51,6 +57,8 @@ Añade estas líneas. Las pondré en la plataforma.
 [Ll]ogs/
 [Mm]emoryCaptures/
 sysinfo.txt
+```
+
 
 <!-- Crear repositorio -->
 Ahora vamos a GitHub para crear un nuevo repositorio.
@@ -60,12 +68,14 @@ Abre el Unity Hub y haz clic en el botón que dice "Add". Después, busca la car
 <!-- Sorting Layers y distancia de siembra -->
 # Ubicación de la siembra
 
-<!-- canva -->
+==canva==
+
 Lo primero que vamos a hacer hoy es trabajar con Sorting Layers.
 
 ¿Y qué son las Sorting Layers en Unity?
 
 Son una herramienta que nos permite controlar el orden en el que se dibujan los objetos 2D en pantalla, como sprites, interfaces de usuario, partículas, entre otros. Esto es muy útil cuando queremos que ciertos elementos aparezcan encima o debajo de otros, sin tener que moverlos en el eje Z.
+
 <!-- unity esperar 3 seg -->
 Selecciona un GameObject que tenga un Sprite Renderer.
 En el panel del Inspector, verás dos propiedades importantes:
@@ -77,18 +87,22 @@ Order in Layer: Es un número entero que indica la prioridad dentro de esa capa.
 Ahora vamos a crear nuestras propias Sorting Layers.
 Para hacerlo, ve al menú:
 
-Edit > Project Settings > Tags and Layers > Sorting Layers
+`Edit > Project Settings > Tags and Layers > Sorting Layers`
 
+# Desafío 
 
-<!-- Desafío: pseudocódigo sembrar adelante del personaje y en la dirección que está mirando.
-EN CANVA -->
+<!-- Desafío: pseudocódigo sembrar adelante del personaje y en la dirección que está mirando. -->
+
+==EN CANVA==
+
 
 Ahora viene el desafío.
 La idea es que el personaje siembre algo frente a él, en la dirección en la que está mirando, no justo debajo de sus pies. Tienes 5 min.
 
 
 <!-- Solución e implementación -->
-<!-- Canva -->
+==Canva==
+
 Esta es la solución que a mí se me ocurrió, pero eso no significa que sea la única forma de hacerlo.
 En programación, muchas veces hay varias maneras válidas de resolver un mismo problema. Lo importante es que la lógica tenga sentido y que funcione correctamente.
 
@@ -99,8 +113,8 @@ Con esos dos valores podemos construir una dirección, y usarla para calcular un
 Ahora, vamos a modificar el método Sembrar.
 En lugar del contenido que tiene actualmente, vamos a escribir lo siguiente:
 
-<!-- sublime -->
-
+==sublime==
+```
 public void Sembrar(InputAction.CallbackContext contexto){
     if(contexto.started){
         Debug.Log("Presionaste C");
@@ -118,18 +132,9 @@ public void Sembrar(InputAction.CallbackContext contexto){
         Instantiate(trigo, posicionFinal, Quaternion.identity);
     }
 }
+```
+
 Con esto, el trigo se sembrará un paso adelante, en la dirección en la que el personaje estaba mirando la última vez que se movió.
 La línea donde multiplicamos por 1f nos permite ajustar qué tan lejos se siembra. Puedes aumentar o reducir ese número si quieres que esté más cerca o más lejos.
 
-
-<!-- PreFAbplanta -->
-
-<!-- Modificar código para reciclarlo -->
-
-<!-- Agregar valores al inspector -->
-
-<!-- Menú siembra -->
-
-<!-- Guardar juego -->
-
-<!-- recoger semillas -->
+# 
