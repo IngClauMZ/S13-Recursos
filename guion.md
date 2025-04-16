@@ -137,4 +137,89 @@ public void Sembrar(InputAction.CallbackContext contexto){
 Con esto, el trigo se sembrará un paso adelante, en la dirección en la que el personaje estaba mirando la última vez que se movió.
 La línea donde multiplicamos por 1f nos permite ajustar qué tan lejos se siembra. Puedes aumentar o reducir ese número si quieres que esté más cerca o más lejos.
 
-# 
+==Canva==
+
+Hasta ahora, hemos estado creando prefabs y scripts que controlan el comportamiento de las plantas. Pero, ¿qué pasa si queremos tener muchas plantas distintas, con diferentes tiempos de crecimiento, sprites, precios, etc.? Si metemos toda esa información directamente en los scripts, va a ser difícil de mantener y modificar.
+
+Aquí es donde entra ScriptableObject.
+
+Un ScriptableObject es una clase especial en Unity que nos permite guardar datos como si fueran "archivitos" independientes. No necesitan estar en una escena para existir, y lo mejor de todo: se pueden editar desde el inspector como si fueran assets normales. Son súper útiles para definir configuraciones que se repiten.
+
+¿Qué vamos a hacer?
+Vamos a crear un ScriptableObject llamado `DatosSemillas`. Esta clase va a contener los datos que definen una semilla:
+
+Nombre de la planta (por ejemplo: Trigo)
+
+Tiempo de crecimiento
+
+Sprite que se mostrará cuando esté plantada
+
+Prefab que se instanciará al crecer
+
+Precio de la semilla
+
+Así, cada semilla será un archivo independiente que podemos arrastrar fácilmente a menús, scripts, tiendas o lo que necesitemos.
+
+==sublime==
+```
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "NuevaSemilla", menuName = "Granja/Semilla")]
+public class DatosSemillas : ScriptableObject
+{
+    public string nombre;
+    public Sprite icono;
+    public GameObject prefabPlantaCrecida;
+    public float tiempoCrecimiento;
+    public int precio;
+}
+```
+Una vez que tengamos este script, podemos ir a Unity, hacer clic derecho en la carpeta donde lo guardamos y seleccionar:
+
+Create > Granja > Semilla
+
+¡Y listo! Unity creará un nuevo asset con ese formato y lo llamamos ==trigo== . Lo abrimos y llenamos los campos: 
+`nombre = trigo;` , sprite, prefab, precio, etc.
+
+Esto nos va a permitir reutilizar esta configuración cuantas veces queramos, con la ventaja de que podemos modificarla sin tocar el código. Y cuando en el juego seleccionemos qué semilla sembrar, solo tendremos que referenciar uno de estos assets y ya tendremos todos sus datos listos para usar.
+
+== cambio de scripts (11) ==
+
+Cambiamos el script de `Siembra Productos.cs` la linea de `private float tiempoEspera = 8f;` por
+
+```
+public DatosPlanta datos;
+private float tiempo;
+
+void Start()
+{
+    tiempo = datos.tiempoEntreAnimaciones;
+    // usar tiempo para tus animaciones
+}
+```
+Y en el prefab "trigo", arrastras el asset Trigo.asset al campo datos.
+
+Modifica el script `MovimientoJugador`
+
+```
+public DatosPlanta semillaSeleccionada; // contiene el prefab
+
+Instantiate(semillaSeleccionada.prefabCrecido, posicion, Quaternion.identity);
+
+```
+# Paso ?: Creamos otra semilla
+
+## Prefab
+
+Creamos un Prefab con las animaciones del Tomate.
+
+## ScriptableObject
+
+Creamos un nuevo ScriptableObject y lo llamamos tomate, llenamos los datos en el Inspector.
+
+## Probarlo
+
+En tu jugador (MovimientoJugador), en el campo semillaSeleccionada, cambia el asset Trigo por Tomate y juega la escena.
+Al presionar C, deberías sembrar una planta de tomate en lugar de trigo.
+
+# Paso ? : Creacion de menú de siembra
