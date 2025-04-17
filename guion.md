@@ -66,7 +66,7 @@ Este repositorio será el espacio donde guardaremos y actualizaremos nuestro pro
 <!-- Abirir en Unity -->
 Abre el Unity Hub y haz clic en el botón que dice "Add". Después, busca la carpeta donde guardaste tu proyecto y selecciona "Open". Una vez que el proyecto aparece en la lista, ya está listo para usarse. Ábrelo... y comencemos.
 <!-- Sorting Layers y distancia de siembra -->
-# Ubicación de la siembra
+# Paso 2: Ubicación de la siembra
 
 ==canva==
 
@@ -89,7 +89,7 @@ Para hacerlo, ve al menú:
 
 `Edit > Project Settings > Tags and Layers > Sorting Layers`
 
-# Desafío 
+## Desafío 
 
 <!-- Desafío: pseudocódigo sembrar adelante del personaje y en la dirección que está mirando. -->
 
@@ -136,6 +136,8 @@ public void Sembrar(InputAction.CallbackContext contexto){
 
 Con esto, el trigo se sembrará un paso adelante, en la dirección en la que el personaje estaba mirando la última vez que se movió.
 La línea donde multiplicamos por 1f nos permite ajustar qué tan lejos se siembra. Puedes aumentar o reducir ese número si quieres que esté más cerca o más lejos.
+
+# Paso 3: ScriptableAsset
 
 ==Canva==
 
@@ -207,7 +209,7 @@ public DatosPlanta semillaSeleccionada; // contiene el prefab
 Instantiate(semillaSeleccionada.prefabCrecido, posicion, Quaternion.identity);
 
 ```
-# Paso ?: Creamos otra semilla
+# Paso 4: Creamos otra semilla
 
 ## Prefab
 
@@ -222,4 +224,4 @@ Creamos un nuevo ScriptableObject y lo llamamos tomate, llenamos los datos en el
 En tu jugador (MovimientoJugador), en el campo semillaSeleccionada, cambia el asset Trigo por Tomate y juega la escena.
 Al presionar C, deberías sembrar una planta de tomate en lugar de trigo.
 
-# Paso ? : Creacion de menú de siembra
+# Paso 5 : Creacion de menú de siembra
