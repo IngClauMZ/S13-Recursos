@@ -70,7 +70,7 @@ Abre el Unity Hub y haz clic en el botón que dice "Add". Después, busca la car
 
 ==canva==
 
-Lo primero que vamos a hacer hoy es trabajar con Sorting Layers.
+Cuando probamos nuestro juego, podemos ver que el Player queda entre la siembra y el piso, vamos a usar las Sorting Layers para poder mejorar esto.
 
 ¿Y qué son las Sorting Layers en Unity?
 
@@ -139,7 +139,7 @@ La línea donde multiplicamos por 1f nos permite ajustar qué tan lejos se siemb
 
 # Paso 3: ScriptableAsset
 
-==Canva==
+==Canva | 3-ScriptableObject==
 
 Hasta ahora, hemos estado creando prefabs y scripts que controlan el comportamiento de las plantas. Pero, ¿qué pasa si queremos tener muchas plantas distintas, con diferentes tiempos de crecimiento, sprites, precios, etc.? Si metemos toda esa información directamente en los scripts, va a ser difícil de mantener y modificar.
 
@@ -147,7 +147,7 @@ Aquí es donde entra ScriptableObject.
 
 Un ScriptableObject es una clase especial en Unity que nos permite guardar datos como si fueran "archivitos" independientes. No necesitan estar en una escena para existir, y lo mejor de todo: se pueden editar desde el inspector como si fueran assets normales. Son súper útiles para definir configuraciones que se repiten.
 
-¿Qué vamos a hacer?
+¿Qué vamos a hacer? ==en Unity==
 Vamos a crear un ScriptableObject llamado `DatosSemillas`. Esta clase va a contener los datos que definen una semilla:
 
 Nombre de la planta (por ejemplo: Trigo)
@@ -162,7 +162,8 @@ Precio de la semilla
 
 Así, cada semilla será un archivo independiente que podemos arrastrar fácilmente a menús, scripts, tiendas o lo que necesitemos.
 
-==sublime==
+==sublime== `Datos Semillas`
+
 ```
 using UnityEngine;
 
@@ -170,9 +171,8 @@ using UnityEngine;
 public class DatosSemillas : ScriptableObject
 {
     public string nombre;
-    public Sprite icono;
-    public GameObject prefabPlantaCrecida;
-    public float tiempoCrecimiento;
+    public GameObject prefabPlanta;
+    public float tiempoEspera;
     public int precio;
 }
 ```
@@ -185,12 +185,12 @@ Create > Granja > Semilla
 
 Esto nos va a permitir reutilizar esta configuración cuantas veces queramos, con la ventaja de que podemos modificarla sin tocar el código. Y cuando en el juego seleccionemos qué semilla sembrar, solo tendremos que referenciar uno de estos assets y ya tendremos todos sus datos listos para usar.
 
-== cambio de scripts (11) ==
+==cambio de scripts (11)==
 
 Cambiamos el script de `Siembra Productos.cs` la linea de `private float tiempoEspera = 8f;` por
 
 ```
-public DatosPlanta datos;
+public DatosSemillas datos;
 private float tiempo;
 
 void Start()
