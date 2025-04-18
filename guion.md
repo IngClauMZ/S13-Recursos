@@ -185,30 +185,21 @@ Create > Granja > Semilla
 
 Esto nos va a permitir reutilizar esta configuración cuantas veces queramos, con la ventaja de que podemos modificarla sin tocar el código. Y cuando en el juego seleccionemos qué semilla sembrar, solo tendremos que referenciar uno de estos assets y ya tendremos todos sus datos listos para usar.
 
-==cambio de scripts (11)==
+==cambio de scripts (11) (v3.1)==
 
-Cambiamos el script de `Siembra Productos.cs` la linea de `private float tiempoEspera = 8f;` por
+Cambiamos el script de `Siembra Productos.cs`  añadimos  una variable tipo DatoSemillas (justo el nombre de nuestro ScriptableObject, en la linea de `private float tiempoEspera = 8f;` quitamos el valor, y lo enlazamos en `Start();`
 
 ```
-public DatosSemillas datos;
-private float tiempo;
+public DatoSemillas datos;
 
 void Start()
 {
     tiempo = datos.tiempoEntreAnimaciones;
-    // usar tiempo para tus animaciones
+    
 }
 ```
-Y en el prefab "trigo", arrastras el asset Trigo.asset al campo datos.
-
-Modifica el script `MovimientoJugador`
-
-```
-public DatosPlanta semillaSeleccionada; // contiene el prefab
-
-Instantiate(semillaSeleccionada.prefabCrecido, posicion, Quaternion.identity);
-
-```
+Y en el prefab "trigo", arrastras el TrigoDatos al campo datos.
+ 
 # Paso 4: Creamos otra semilla
 
 ## Prefab
